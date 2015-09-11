@@ -1,7 +1,7 @@
 upstream app_pool {
     ip_hash;
-    {{range $server:=.services_app}}
-        server {{$server.Value}};
+    {{range getvs "/services/app/*"}}
+        server {{.}};
     {{end}}
 }
 
