@@ -11,7 +11,9 @@ COPY . /src
 
 RUN cp /src/confd/nginx\.toml /etc/confd/conf\.d/nginx\.toml && \
     cp /src/confd/nginx\.tmpl /etc/confd/templates/nginx\.tmpl && \
-    rm /etc/nginx/sites-enabled/default
+    rm /etc/nginx/sites-enabled/default && \
+    rm /etc/nginx/nginx\.conf && \
+    cp /src/nginx\.conf /etc/nginx/nginx\.conf
 
 RUN cp /src/confd.sh /usr/local/bin/confd-watch && \
     chmod +x /usr/local/bin/confd-watch
